@@ -8,6 +8,7 @@ Original file is located at
 """
 
 def find_filter_duplicates(df, id_column, date_column, filepath_question_metadata):
+  df[date_column] = pd.to_datetime(df[date_column], format='%Y-%m-%d %H:%M:%S')
   if df[date_column].dtype != 'datetime64[ns, UTC]':
     return print("The function requires a date/time column with data in the format 'datetime64'.")
   
