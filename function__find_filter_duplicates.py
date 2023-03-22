@@ -10,11 +10,8 @@ import pandas as pd
 import numpy as np
 
 def find_filter_duplicates(df, id_column, date_column, filepath_question_metadata):
-#   df[date_column] = df[date_column].dt.tz_convert(None)  
-  df[date_column] = pd.to_datetime(df[date_column], format='%Y-%m-%d %H:%M:%S')
-  
-#   if df[date_column].dtype != 'datetime64[ns, UTC]':
-#     return print("The function requires a date/time column with data in the format 'datetime64'.")
+  if df[date_column].dtype != 'datetime64[ns, UTC]':
+    return print("The function requires a date/time column with data in the format 'datetime64'.")
   
   survey_all = df.groupby(id_column).filter(lambda x: len(x)==1)
   survey_dupes = df.groupby(id_column).filter(lambda x: len(x)>1)
