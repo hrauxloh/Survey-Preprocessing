@@ -8,6 +8,8 @@ Original file is located at
 """
 import pandas as pd
 import numpy as np
+import rpy2.robjects.packages as rpackages
+import rpy2.robjects.pandas2ri as pandas2ri
 
 def find_filter_duplicates(df, id_column, date_column, q_metadata):
 #   if df[date_column].dtype != "datetime64[ns, UTC]":
@@ -56,4 +58,6 @@ def find_filter_duplicates(df, id_column, date_column, q_metadata):
   print(f"Out of {len(df)} entries in the survey:\n\t{len(survey_all)} Single Entry Participants\n\t{len(survey_dupes)} Duplicated entries amongst {len(set(survey_dupes.p_0002.to_list()))} Participants")
   ## Adding the completed entries back into main dataframe
   survey_all_add = survey_all.append(entries).reset_index()
-  return survey_all_add
+  pandas2ri.activate()
+  r_dataframe = pandas2ri.py2ri(survey_all_add)
+  return r_dataframe
