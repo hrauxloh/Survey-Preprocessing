@@ -18,7 +18,8 @@ def find_filter_duplicates(df, id_column, date_column, filepath_question_metadat
   
   ## Getting question MetaData for determining order of occurance in the survey
   # Survey Meta Data File (page, question_id, question_label, question_text, question_type, wave_1, wave_2, wave_3)
-  question_metadata= pd.read_csv(filepath_question_metadata, sep=',', error_bad_lines=False).reset_index().rename(columns={'index':'Position'})
+  #question_metadata= pd.read_csv(filepath_question_metadata, sep=',', error_bad_lines=False).reset_index().rename(columns={'index':'Position'})
+  question_metadata= question_metadata.reset_index().rename(columns={'index':'Position'})
 
   ## Positionality of Questions Dictionary
   question_positions = question_metadata[['page']].drop_duplicates().reset_index(drop=True).reset_index().rename(columns={'index':'Position'})
