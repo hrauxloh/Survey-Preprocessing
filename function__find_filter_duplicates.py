@@ -9,7 +9,7 @@ Original file is located at
 import pandas as pd
 import numpy as np
 
-def find_filter_duplicates(df, id_column, date_column, filepath_question_metadata):
+def find_filter_duplicates(df, id_column, date_column, question_metadata):
 #   if df[date_column].dtype != "datetime64[ns, UTC]":
 #     return print("The function requires a date/time column with data in the format 'datetime64'.")
   
