@@ -22,7 +22,7 @@ con_survey <- dbConnect(RMySQL::MySQL(),
                         host = '18.156.8.93', 
                         port = 3306, 
                         user = 'poltrack',
-                        password = 'peter#111')
+                        password = '###')
 dbListTables(con_survey)
 
 party_ids <- SQL_query_function(c('partyid'), c(1, 2, 3, 4), "YES")
